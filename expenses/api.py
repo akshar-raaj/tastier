@@ -21,3 +21,7 @@ class ExpenseResource(ModelResource):
         }
         authorization = ExpenseAuthorization()
         authentication = ApiKeyAuthentication()
+
+    def hydrate(self, bundle):
+        bundle.obj.user = bundle.request.user
+        return bundle
