@@ -4,6 +4,11 @@ from tastypie.authentication import ApiKeyAuthentication
 
 from .models import Expense
 
+class ExpenseAuthorization(Authorization):
+
+    def read_list(self, object_list, bundle):
+        return object_list.filter(user=bundle.request.user)
+
 class ExpenseResource(ModelResource):
 
     class Meta:
@@ -14,5 +19,5 @@ class ExpenseResource(ModelResource):
             'amount': ['gt'],
             'description': ['icontains']
         }
-        authorization = Authorization()
+        authorization = ExpenseAuthorization()
         authentication = ApiKeyAuthentication()
