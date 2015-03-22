@@ -1,5 +1,6 @@
 from tastypie.resources import ModelResource
 from tastypie.authorization import Authorization
+from tastypie.authentication import ApiKeyAuthentication
 
 from .models import Expense
 
@@ -14,3 +15,4 @@ class ExpenseResource(ModelResource):
             'description': ['icontains']
         }
         authorization = Authorization()
+        authentication = ApiKeyAuthentication()
