@@ -14,6 +14,11 @@ class ExpenseAuthorization(Authorization):
         obj = object_list[0]
         return obj.user == bundle.request.user
 
+    def create_detail(self, object_list, bundle):
+        user = bundle.request.user
+        # Return True if current user is Sheryl else return False
+        return user.username == "sheryl"
+
 
 class ExpenseResource(ModelResource):
 
