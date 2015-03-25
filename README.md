@@ -1,0 +1,1 @@
+Accompanying project for [Getting started with tastypie blog](http://agiliq.com/blog/2015/03/getting-started-with-django-tastypie/)
