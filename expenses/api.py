@@ -1,6 +1,7 @@
 from tastypie.resources import ModelResource
 from tastypie.authorization import Authorization
 from tastypie.authentication import ApiKeyAuthentication
+from tastypie import fields
 
 from .models import Expense
 
@@ -21,6 +22,7 @@ class ExpenseAuthorization(Authorization):
 
 
 class ExpenseResource(ModelResource):
+    description = fields.CharField(attribute='description', use_in='detail')
 
     class Meta:
         queryset = Expense.objects.all()
